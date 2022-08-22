@@ -8,6 +8,22 @@
     <meta name="description"
         content="This is an example of a meta description. This will often show up in search results." />
     <title>Book: Grokking Algorithms</title>
+    <style>
+        table,
+        td {
+            border: 1px solid #333;
+        }
+
+        thead,
+        tfoot {
+            background-color: #333;
+            color: #fff;
+        }
+
+        code {
+            background-color: lavenderblush;
+        }
+    </style>
 </head>
 
 <body>
@@ -19,15 +35,17 @@
         author: <a href="https://adit.io/">Aditya Bhargava</a>,
         <a href="https://www.linkedin.com/in/adityabhargava/">linkedin</a>
     </p>
-    <p>book: 
+    <p>
+        book:
         <a href="https://www.amazon.com/Grokking-Algorithms-illustrated-programmers-curious/dp/1617292230">amazon
             link</a>,
         <a href="https://edu.anarcho-copy.org/Algorithm/grokking-algorithms-illustrated-programmers-curious.pdf">free
-            link -
-            but think about purchasing</a>
+            link - but think about purchasing</a>
     </p>
 
-    <p>my goal: get a high-level understanding of some data structures & algorithms, prepare to read a more complex book (next book - algorithm )
+    <p>
+        my goal: get a high-level understanding of some data structures &
+        algorithms. prepare to read a more complex book (next book - algorithm )
     </p>
     <hr />
 
@@ -79,8 +97,11 @@
 
     <h2>chapter 1: introduction to algorithms</h2>
     <h4>binary search</h4>
-    <ul>
-        <li>it's a search algorithm</li>
+    <ol>
+        <li>
+            it's a search algorithm - find if single item exists in a list of items
+        </li>
+        <li>requires the list to be sorted</li>
         <li>
             sample use cases:
             <ul>
@@ -89,7 +110,356 @@
                 <li>when you log in to FB, the system has to find your username</li>
             </ul>
         </li>
-    </ul>
+        <li>
+            simple example: how would you guess a number in a list of numbers (from
+            1 to 100)? with possible answers being: too high, too low, correct
+        </li>
+        <ul>
+            <li>
+                option 1: just guess from 1 till 100. if the number is 99, you would
+                have to make 99 guesses 🐢
+            </li>
+            <li>
+                option 2: cut in halfs 🏃🏻‍♂️💨
+                <ol>
+                    <li>start with 50 (middle between 1 and 100)</li>
+                    <li>if the actual number is higher -> pick 75</li>
+                    <li>if the actual number is lower -> pick 25</li>
+                    <li>repeat until the number is found</li>
+                </ol>
+            </li>
+        </ul>
+
+        <li>
+            how many steps (at worst case) would it take for you to search for a
+            number in list of 240K numbers?
+        </li>
+        <ul>
+            <li>simple search: 240K steps</li>
+            <li>
+                binary search: 18 steps (because
+                <code>240K/120K/60K/30K/15K/7.5K/3750/1875/938/469/235/118/59/30/15/8/4/2/1</code>)
+            </li>
+        </ul>
+        <li>worst case comparison</li>
+        <ul>
+            <li>simple search: <code>N</code></li>
+            <li>binary search: <code>log_2(N)</code></li>
+        </ul>
+        <li>logarithms reminder</li>
+        <ul>
+            <li>most basic explanation: logarithms are the flip of exponentials</li>
+            <li>
+                <code>log_10(100)</code> is like asking how many times do we need to
+                multiple 10s together to get to 100?
+            </li>
+            <li>in Big O you almost always just use log_2</li>
+        </ul>
+
+        <li>coding example</li>
+        <ul>
+            <li>
+                arrays will be explained later; for now - it's just a sequence of
+                elements in a row of consecutive buckets. indexing starts from 0; 1st
+                bucket's index is 0, 2nd - 1
+            </li>
+            <li>process:</li>
+            <ol>
+                <li>
+                    set low (start), high (end) and guess (middle inbetween start and
+                    end)
+                </li>
+                <li>check if middle is less/more/equal target</li>
+                <li>if guess is less, then set low to middle</li>
+                <li>if guess is more, then set high to middle</li>
+                <li>if guess is equal, then return guess</li>
+                <li>repeat until guess is equal</li>
+            </ol>
+            <li>my code in JS: [to do: add link]</li>
+        </ul>
+
+        <li>running time</li>
+        <ul>
+            <li>efficiency can be measured in time and speed</li>
+            <li>
+                if you have to go through N items in a list of N items ->
+                <i>linear time</i>
+            </li>
+            <li>binary search -> <i>logarithmic time</i></li>
+        </ul>
+    </ol>
+
+    <h4>Big O notation</h4>
+    <ol>
+        <li>runtimes don't grow at the same rate</li>
+        <li>
+            example: as the amount of elements largely increases -> the run time for
+            binary search grows a little bit, while the linear time would grow a lot
+        </li>
+        <li>
+            so, it's not enough to know how much time does it take to go through X.
+            you need to know how the run time increases, as the size of the list
+            varies
+        </li>
+        <li>
+            that's big O notation. it doesn't tell you the time or speed in seconds.
+            it tells you the amount of operations.
+        </li>
+        <li>
+            example - you need to somehow draw a 4x4 (16 boxes) grid on A4 paper
+        </li>
+        <ul>
+            <li>option 1: draw 16 boxes - 16 operations - O(N)</li>
+            <li>option 2: fold the paper - 4 items - O(log N)</li>
+        </ul>
+        <li>you usually just care about the worst case scenario</li>
+        <li>
+            most common Big O run times:
+            <table>
+                <thead>
+                    <td>formula</td>
+                    <td>run-time name</td>
+                    <td>example</td>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>O(log n)</td>
+                        <td>log time</td>
+                        <td>binary search</td>
+                    </tr>
+                    <tr>
+                        <td>O(n)</td>
+                        <td>linear time</td>
+                        <td>simple search</td>
+                    </tr>
+                    <tr>
+                        <td>O(n * log n)</td>
+                        <td></td>
+                        <td>quicksort</td>
+                    </tr>
+                    <tr>
+                        <td>O(n^2)</td>
+                        <td></td>
+                        <td>a slow sorting algorithm like selection sort</td>
+                    </tr>
+                    <tr>
+                        <td>O(n!)</td>
+                        <td>factorial time</td>
+                        <td>a really slow algorithm like traveling salesperson</td>
+                    </tr>
+                </tbody>
+            </table>
+        </li>
+        <li>O(N!) case example - travelling salesperson problem or TSP</li>
+        <ul>
+            <li>
+                It asks the question: "Given a list of cities and the distances
+                between each pair of cities, what is the shortest possible route that
+                visits each city exactly once and returns to the origin city?
+            </li>
+            <li>
+                the answer is to look at all variants and pick the best. given 5
+                cities, the amount of permutations is 5! -> 120. given 7, it's 5040.
+            </li>
+            <li>how to improve this algorithm? impossible.</li>
+        </ul>
+    </ol>
+
+    <h2>chapter 2: selection sort</h2>
+    <h4>how memory works</h4>
+    <ol>
+        <li>
+            example: imagine you have a chest of drawers, each drawer can store one
+            thing. you want to store two things - you need another drawer. computer
+            memory is like a chest of drawers but each of them has an address.
+        </li>
+        <li>
+            if you want to store multiple items on the memory. there are two basic
+            ways to do it: arrays and linked lists
+        </li>
+    </ol>
+    <h4>arrays and linked lists</h4>
+    <li>arrays</li>
+    <ol>
+        <li>
+            example: storing memory for array items is like coming to cinema with
+            friends. you and your other 3 friends would look for seats where you all
+            can sit together. now, imagine 2 more friends come and you need to find
+            another row of seats, where 6 of you can sit.
+        </li>
+        <li>
+            one easy fix is to "reserve" more seats. it has two downsides: some of
+            the seats may be unused OR you may even need more seats.
+        </li>
+    </ol>
+    <li>linked lists</li>
+    <ol>
+        <li>
+            main difference - linked list items can be stored anywhere in the memory
+        </li>
+        <li>
+            example: treasure hunt.
+            <i>You go to the first address, and it says, “The next item can be found
+                at address 123.” So you go to address 123, and it says, “The next item
+                can be found at address 847,” and so on.</i>
+        </li>
+        <li>
+            adding an item in the linked list is easy, you just drop it anywhere in
+            the memory, and store its address in previous item
+        </li>
+        <li>
+            forum cinema and friends example: linked list is like saying - ok let's
+            split and watch separately
+        </li>
+        <li>
+            linked lists have a problem. you can't know what 7th item is without
+            going through the first 6. arrays are different.
+        </li>
+    </ol>
+
+    <h4>run-times for linked lists and arrays</h4>
+
+    <table>
+        <thead>
+            <td>operation</td>
+            <td>linked list</td>
+            <td>array</td>
+        </thead>
+        <tbody>
+            <tr>
+                <td>read</td>
+                <td>O(N)</td>
+                <td>O(1)</td>
+            </tr>
+            <tr>
+                <td>write</td>
+                <td>O(1)</td>
+                <td>O(N)</td>
+            </tr>
+            <tr>
+                <td>deletion</td>
+                <td>O(1)</td>
+                <td>O(N)</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h4>memory access</h4>
+    <ol>
+        <li>
+            there are 2 types of memory access: <i>random access</i> and
+            <i>sequential access</i>
+        </li>
+        <li>
+            <i>sequential</i> is going through all items before the item first.
+            linked lists can only do sequential.
+        </li>
+        <li>
+            <i>random</i> is accessing the item immediately. arrays use random.
+        </li>
+    </ol>
+
+    <h4>selection sort</h4>
+    <ol>
+        <li>
+            example: imagine a list of artists with their view count, you need to
+            sort them in order of ranking
+        </li>
+        <li>
+            one way to do it is to go through the list, pick the most-viewed -> add
+            it to the first place in another list. then find 2nd most played. repeat
+            until the list is empty
+        </li>
+        <li>this sorting algorithm's complexity would be <code>O(n^2)</code>:</li>
+        <ol>
+            <li>check one item - n</li>
+            <li>
+                go through all items and check all of them - <code>1/2 * n</code>
+            </li>
+            <li>
+                in total: <code>n * 1/2 * n</code> but constants are ignored in Big O,
+                so it becomes <code>O(n^2)</code>
+            </li>
+        </ol>
+        <li>my code in JS: [to add link]</li>
+    </ol>
+
+    <h2>chapter 3: recursion</h2>
+    <h4>example</h4>
+    <ol>
+        <li>
+            imagine your grandma gave you a box. you open the box and there are many
+            more boxes with more boxes inside. in one of them, there's a key that
+            you need to find
+        </li>
+        <li>how do you approach finding the key?</li>
+        <ol>
+            <li><code>while</code>:</li>
+            <ol>
+                <li>make a pile of boxes that you need to go through</li>
+                <li>grab a box, look through it</li>
+                <li>if you find a box, add it to the pile to look through later</li>
+                <li>if you find a key, done</li>
+                <li>repeat</li>
+            </ol>
+            <li><code>recursion</code>:</li>
+            <ol>
+                <li>go through every item in the box</li>
+                <li>if you find a box, go to step 1</li>
+                <li>if you find a key, done</li>
+            </ol>
+        </ol>
+        <li>There’s no performance benefit to using recursion</li>
+        <li><a href="https://stackoverflow.com/questions/72209/recursion-or-iteration/72694#72694">Leigh Caldwell</a>
+            on Stack Overflow: <i>Loops may achieve a performance gain for
+                your program. Recursion may achieve a performance gain for your
+                programmer. Choose which is more important in your situation!</i></li>
+    </ol>
+
+    <h4>base case and recursive case</h4>
+    <ol>
+        <li>it's easy to run into an infinite loop because the function calls itself</li>
+        <li>code example - countdown in JS: [to add link]</li>
+        <li>2 required components for a recursive function: base case (when does it stop) and recursive case (when does
+            it call itself)</li>
+    </ol>
+
+    <h4>call stack</h4>
+    <ol>
+        <li>example: throwing a bbq party and you have a sticky notes list. you add 1 by 1 them and them start taking
+            off 1 by 1 from the front.</li>
+        <li>stack has 2 actions: take (pop) and add (push)</li>
+        <li>recursive functions also use call stack</li>
+        <li>call stack first gets the items in the list, then start executing them (popping)</li>
+        <li>half-complete functions are stacked on a call stack. saving all of it can take a lot of memory. there are
+            two solutions:</li>
+        <ol>
+            <li>rewrite into a loop</li>
+            <li>use <i>tail recursion</i></li>
+        </ol>
+    </ol>
+
+    <h2>chapter 4: quicksort</h2>
+    <h4>divide & conquer</h4>
+    <ol>
+        <li>example: a farm land of 1680 x 640 meters</li>
+        <li>you need divide this land into square plots and you want the square plots to be as big as possible</li>
+        <li>to solve a problem using divide & conquer you need 2 things:</li>
+        <ol>
+            <li>
+                base case
+            </li>
+            <li>divide or decrease your problem until it becomes the best case</li>
+        </ol>
+        <li>Euclid's algorithm: <i>If you find the biggest box that will work for this size, that will be the
+                biggest box that will work for the entire farm.</i> Why it works -> <a
+                href="https://www.khanacademy.org/computing/computer-science/cryptography/modarithmetic/a/the-euclidean-algorithm">khan
+                academy<a /></li>
+        <li>example 2: sum all items of array using recursion and d&c, my code in JS: [to do add link]</li>
+        <li>sneak peak at functional programming: languages like Haskell don't even have loops 🤯 so you have to use
+            recursion</li>
+    </ol>
+
 </body>
 
 </html>
