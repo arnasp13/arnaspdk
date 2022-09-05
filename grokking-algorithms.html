@@ -23,6 +23,10 @@
         code {
             background-color: lavenderblush;
         }
+
+        .highlight {
+            background-color: yellow;
+        }
     </style>
 </head>
 
@@ -30,7 +34,7 @@
     <h1>Book: Grokking Algorithms</h1>
 
     <p>started in 2022-08-18</p>
-    <p>status: in-progress</p>
+    <p>status: <code>in-progress</code></p>
     <p>
         author: <a href="https://adit.io/">Aditya Bhargava</a>,
         <a href="https://www.linkedin.com/in/adityabhargava/">linkedin</a>
@@ -45,7 +49,9 @@
 
     <p>
         my goal: get a high-level understanding of some data structures &
-        algorithms. prepare to read a more complex book (next book - algorithm )
+        algorithms. prepare to read a more complex book (next book - introduction to algorithms or algorithm design
+        manual, im
+        not sure)
     </p>
     <hr />
 
@@ -67,24 +73,35 @@
         <li>supposed to be read as it follows</li>
     </ul>
 
-    <h4>what i'm supposed to learn (ordered by chapters)</h4>
+    <h4>what i'm supposed to learn (ordered by chapters) and status on these items</h4>
     <ul>
-        <li>big o</li>
-        <li>arrays and linked lists</li>
-        <li>recursion</li>
+        <li>big o ☑️</li>
+        <li>arrays and linked lists ☑️</li>
+        <li>recursion ☑️</li>
         <li>
             problem solving techniques
             <ul>
-                <li>divide and conquer</li>
+                <li>divide and conquer ☑️</li>
                 <li>dynamic programming</li>
                 <li>greedy algorithm</li>
             </ul>
         </li>
-        <li>hash tables</li>
+        <li>hash tables ☑️</li>
         <li>graph algorithms</li>
         <li>k-nearest neighbors (KNN)</li>
         <li>next steps</li>
     </ul>
+
+    <h4>table contents</h4>
+    <ol>
+        <li><a href="#chapter1">chapter 1: introduction to algorithms</a></li>
+        <li><a href="#binary-search">binary search</a>
+        </li>
+        <li><a href="#big-o">Big O notation</a>
+        </li>
+        <li><a href="#chapter2">chapter 2: selection sort</a>
+        </li>
+    </ol>
 
     <h4>to know</h4>
     <ul>
@@ -95,13 +112,13 @@
         <li>code examples in this book use Python 2.7</li>
     </ul>
 
-    <h2>chapter 1: introduction to algorithms</h2>
-    <h4>binary search</h4>
+    <h2 id="chapter1">chapter 1: introduction to algorithms</h2>
+    <h4 id="binary-search">binary search</h4>
     <ol>
         <li>
-            it's a search algorithm - find if single item exists in a list of items
+            <span class="highlight">it's a search algorithm - find if a single item exists in a list of items</span>
         </li>
-        <li>requires the list to be sorted</li>
+        <li><span class="highlight">requires the list to be sorted</span></li>
         <li>
             sample use cases:
             <ul>
@@ -153,7 +170,7 @@
                 <code>log_10(100)</code> is like asking how many times do we need to
                 multiple 10s together to get to 100?
             </li>
-            <li>in Big O you almost always just use log_2</li>
+            <li>in Big O you almost always just use <code>log_2</code> </li>
         </ul>
 
         <li>coding example</li>
@@ -163,7 +180,7 @@
                 elements in a row of consecutive buckets. indexing starts from 0; 1st
                 bucket's index is 0, 2nd - 1
             </li>
-            <li>process:</li>
+            <li><span class="highlight">process:</span> </li>
             <ol>
                 <li>
                     set low (start), high (end) and guess (middle inbetween start and
@@ -175,7 +192,8 @@
                 <li>if guess is equal, then return guess</li>
                 <li>repeat until guess is equal</li>
             </ol>
-            <li>my code in JS: [to do: add link]</li>
+            <li><a href="https://github.com/arnasp13/arnaspdk/blob/master/scripts/binary-search.js">my code in JS</a>
+            </li>
         </ul>
 
         <li>running time</li>
@@ -189,12 +207,13 @@
         </ul>
     </ol>
 
-    <h4>Big O notation</h4>
+    <h4 id="big-o">Big O notation</h4>
     <ol>
         <li>runtimes don't grow at the same rate</li>
         <li>
             example: as the amount of elements largely increases -> the run time for
-            binary search grows a little bit, while the linear time would grow a lot
+            the binary search would grow a little bit (240K items: 18 steps), while the linear time would grow a lot
+            (240K items: 240K steps)
         </li>
         <li>
             so, it's not enough to know how much time does it take to go through X.
@@ -206,11 +225,11 @@
             it tells you the amount of operations.
         </li>
         <li>
-            example - you need to somehow draw a 4x4 (16 boxes) grid on A4 paper
+            example - you need to somehow draw a 4x4 (16 boxes) grid on A4 paper. how can you do it?
         </li>
         <ul>
-            <li>option 1: draw 16 boxes - 16 operations - O(N)</li>
-            <li>option 2: fold the paper - 4 items - O(log N)</li>
+            <li>option 1: draw 16 boxes - 16 operations - <code>O(N)</code></li>
+            <li>option 2: fold the paper - 4 items - <code>O(log N)</code></li>
         </ul>
         <li>you usually just care about the worst case scenario</li>
         <li>
@@ -250,7 +269,7 @@
                 </tbody>
             </table>
         </li>
-        <li>O(N!) case example - travelling salesperson problem or TSP</li>
+        <li><code>O(N!)</code> case example - travelling salesperson problem or TSP</li>
         <ul>
             <li>
                 It asks the question: "Given a list of cities and the distances
@@ -265,7 +284,7 @@
         </ul>
     </ol>
 
-    <h2>chapter 2: selection sort</h2>
+    <h2 id="chapter2">chapter 2: selection sort</h2>
     <h4>how memory works</h4>
     <ol>
         <li>
@@ -381,7 +400,7 @@
                 so it becomes <code>O(n^2)</code>
             </li>
         </ol>
-        <li>my code in JS: [to add link]</li>
+        <li><a href="https://github.com/arnasp13/arnaspdk/blob/master/scripts/selection-sort.js">my code in JS</a></li>
     </ol>
 
     <h2>chapter 3: recursion</h2>
@@ -419,7 +438,8 @@
     <h4>base case and recursive case</h4>
     <ol>
         <li>it's easy to run into an infinite loop because the function calls itself</li>
-        <li>code example - countdown in JS: [to add link]</li>
+        <li><a href="https://github.com/arnasp13/arnaspdk/blob/master/scripts/recursion.js">code example - countdown in
+                JS</a></li>
         <li>2 required components for a recursive function: base case (when does it stop) and recursive case (when does
             it call itself)</li>
     </ol>
@@ -429,6 +449,7 @@
         <li>example: throwing a bbq party and you have a sticky notes list. you add 1 by 1 them and them start taking
             off 1 by 1 from the front.</li>
         <li>stack has 2 actions: take (pop) and add (push)</li>
+        <li>stacks are LIFO (Last In, First Out).</li>
         <li>recursive functions also use call stack</li>
         <li>call stack first gets the items in the list, then start executing them (popping)</li>
         <li>half-complete functions are stacked on a call stack. saving all of it can take a lot of memory. there are
@@ -442,8 +463,8 @@
     <h2>chapter 4: quicksort</h2>
     <h4>divide & conquer</h4>
     <ol>
-        <li>example: a farm land of 1680 x 640 meters</li>
-        <li>you need divide this land into square plots and you want the square plots to be as big as possible</li>
+        <li>example: a farm land of 1680 x 640 meters. you need divide this land into square plots and you want the
+            square plots to be as big as possible</li>
         <li>to solve a problem using divide & conquer you need 2 things:</li>
         <ol>
             <li>
@@ -455,9 +476,298 @@
                 biggest box that will work for the entire farm.</i> Why it works -> <a
                 href="https://www.khanacademy.org/computing/computer-science/cryptography/modarithmetic/a/the-euclidean-algorithm">khan
                 academy<a /></li>
-        <li>example 2: sum all items of array using recursion and d&c, my code in JS: [to do add link]</li>
-        <li>sneak peak at functional programming: languages like Haskell don't even have loops 🤯 so you have to use
+        <li>example #2: sum all items of array using recursion and d&c, my code in JS: [to do add link]</li>
+        <li>sneak peak at functional programming: languages like <a
+                href="https://stackoverflow.com/questions/16004365/simple-haskell-loop">Haskell don't even have loops
+                🤯</a> so you have to use
             recursion</li>
+    </ol>
+
+    <h4>quicksort</h4>
+    <ol>
+        <li>it's a sorting algorithm and much faster than selection sort</li>
+        <li>quicksort also uses D&C</li>
+        <li>quicksort process:</li>
+        <ol>
+            <li>pick a pivot</li>
+            <li>break an array into smaller/larger items. move smaller to left, larger to right</li>
+            <li>repeat until base case (no more than 1 item in a single part)</li>
+            <li>combine back</li>
+        </ol>
+        <li>inductive proofs. each inductive proof has two steps: the base case and the inductive case</li>
+        <li><a href="https://github.com/arnasp13/arnaspdk/blob/master/scripts/quick-sort.js">code in JS example</a></li>
+    </ol>
+
+    <h4>Big O notation revisited</h4>
+    <ol>
+        <li>quicksort in the worst case does <code>O(N^2)</code> but on average <code>O(N log N)</code></li>
+        <li>mergesort is always <code>O(N log N)</code></li>
+        <li>when you're writing <code>big O(N)</code> you actually mean <code>big O(C * N)</code>, where
+            <code>C</code> is the amount of time it takes to execture
+        </li>
+        <li>sometimes it makes no difference at all</li>
+        <li>sometimes it makes a difference: quicksort has a smaller constant than
+            merge sort. So if they’re both <code>O(n log n)</code> time, quicksort is faster. And
+            quicksort is faster in practice because it hits the average case way more
+            often than the worst case.</li>
+        <li>average case vs. worst case</li>
+        <ol>
+            <li>the performance of quicksort heavily depends on the pivot you choose. even if the list is already
+                sorted, it will still check every element. 8 element list (sorted) would still have 8 calls on the
+                stack.
+                BUT if you pick the pivot in the middle - it would only take 4 call stacks on such a list</li>
+            <li>in the worst case, the stack size is
+                <code>O(N)</code>. In the best case, the stack size is <code>O(log N)</code>.
+            </li>
+            <li>each time you're going through the elements and divide up is <code>O(N)</code> and the call stack level
+                is
+                <code>O(log N)</code> in total it would be <code>O(N * log N)</code>. that is the best case scenario
+            </li>
+            <li>worst case: <code> O(N)</code> levels and <code>O(N)</code> time to divide up => <code>O(N^2)</code>
+            </li>
+        </ol>
+    </ol>
+
+    <h2>chapter 5: hash tables</h2>
+    <h4>intro</h4>
+    <ol>
+        <li>
+            example: you're the cashier at the store and you need to tell how much each item costs
+        </li>
+        <ol>
+            <li>the price book is not sorted and you need to search for items - <code>O(N)</code></li>
+            <li>the price book is sorted and you can use binary search to search - <code>O(log N)</code></li>
+            <li>you have an assistant who remembers all prices - <code>O(1)</code></li>
+        </ol>
+        <li>how do you get that assistant?</li>
+    </ol>
+
+    <h4>hash functions</h4>
+    <li>a hash function is a function where you put in a string
+        and you get
+        back a number</li>
+    <ol>
+        <li>the hash function consistently maps a name to the same index</li>
+        <li>the hash function maps different strings to different indexes</li>
+        <li>the hash function knows how big your array is and only returns valid
+            indexes</li>
+    </ol>
+    <li>put a hash function and an array together,
+        and you get a data structure called a hash table.</li>
+    <li>they’re also known as hash maps, maps, dictionaries, and
+        associative arrays</li>
+
+    <h4>use cases</h4>
+    <ol>
+        <li>modeling relationships from one thing to another thing</li>
+        <ol>
+            <li>example phone book: put a name -> get a phone number</li>
+        </ol>
+        <li>filtering out duplicates</li>
+        <ol>
+            <li>example: voting system. check if someone voted before or not</li>
+        </ol>
+        <li>caching/memorizing data instead of making your server do work</li>
+        <ol>
+            <li>so websites use cache. and if you've never visited a site, it might not be cached but if you have - it
+                could be cached</li>
+            <li>a hash map could be used to store the url and check whether it has been cached</li>
+        </ol>
+    </ol>
+
+    <h4>collisions</h4>
+    <ol>
+        <li>hash collisions or clash - when more than one item is being stored on the same key</li>
+    </ol>
+
+    <h4>performance</h4>
+    <ol>
+        <li>big O</li>
+        <table>
+            <thead>
+                <td>operation</td>
+                <td>hash table (average)</td>
+                <td>hash table (worst)</td>
+                <td>arrays</td>
+                <td>linked lists</td>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>search</td>
+                    <td>O(1)</td>
+                    <td>O(N)</td>
+                    <td>O(1)</td>
+                    <td>O(N)</td>
+                </tr>
+                <tr>
+                    <td>insert</td>
+                    <td>O(1)</td>
+                    <td>O(N)</td>
+                    <td>O(N)</td>
+                    <td>O(1)</td>
+                </tr>
+                <tr>
+                    <td>delete</td>
+                    <td>O(1)</td>
+                    <td>O(N)</td>
+                    <td>O(N)</td>
+                    <td>O(1)</td>
+                </tr>
+            </tbody>
+        </table>
+        <li>if collisions are avoided properly, then the average case is applicable. to avoid collisions, you need:</li>
+        <ol>
+            <li>a low load factor</li>
+            <li>a good hash function</li>
+        </ol>
+        <li>load factor</li>
+        <ol>
+            <li>formula. <code>load factor = total amount of items / slots</code></li>
+            <li>resizing - when you run out of slots and you need to add more to your hash table</li>
+            <li>usually resize double the size</li>
+            <li>rule of thumb is to resize when, the load factor is greater than 0.7</li>
+            <li>even with resizing, hash tables take <code>O(1)</code> averaged out</li>
+        </ol>
+        <li>a good hash function</li>
+        <ol>
+            <li>a good hash function distributes values in the array evenly</li>
+            <li>a bad hash function groups values together and produces a lot of
+                collisions</li>
+            <li>SHA function kind of solves that (?)</li>
+        </ol>
+
+        <li>SHA function (NOT FROM BOOK)</li>
+        <ol>
+            <li>SHA - secure hashing algorithm</li>
+            <li>hashing is similar to encryption, the only difference between hashing and encryption is that hashing is
+                one-way, meaning once the data is hashed, the resulting hash digest cannot be cracked, unless a brute
+                force attack is used. </li>
+        </ol>
+    </ol>
+
+    <h2>chapter 6: breadth-first search</h2>
+    <h4>intro to chapter</h4>
+    <ol>
+        <li>the BFS allows you to find the shortest path between 2 things</li>
+        <li>example use cases</li>
+        <ol>
+            <li>AI for checkers, calculates the fewest moves to victory</li>
+            <li>spell checker</li>
+            <li>find the doctor closest to you</li>
+        </ol>
+    </ol>
+
+    <h4>what is a graph</h4>
+    <ol>
+        <li>a graph models a set of connections</li>
+        <li>example: imagine you're playing poker with friends and you need to know
+            who owes money to whom. Alex -> Adam, Alex -> John, John -> Pamela, Pamela -> Adam.</li>
+        <li>each graph is made up of edges and nodes. a node would be "John" and edge is arrow. Adam is Alex's neighbor.
+        </li>
+    </ol>
+
+    <h4>breadth-first search</h4>
+    <ol>
+        <li>it is a search algorithm, but different kind than binary search.</li>
+        <li>it helps answer 2 types of questions:</li>
+        <ol>
+            <li>Is there a path from node A to node B?</li>
+            <li>What is the shortest path from node A to node B?</li>
+        </ol>
+
+        <li>example</li>
+
+        <ol>
+            <li>in your circle of friends you need to find a mango seller - are you connected to a mango seller on
+                Facebook? search through your friends.</li>
+            <li>suppose, none of your friends are mango sellers. then you need to search your friends' friends.
+            </li>
+            <li>you search one friend's friends. then go to another friend, search their friends. and so on. until
+                you check the whole level.</li>
+            <li>if not found -> deepen the level. that is BFS.</li>
+            <li>the way BFS works, is that you first search all the 1st level connections, then 2nd level (friends'
+                friends), then 3rd...</li>
+        </ol>
+
+        <li>notice that it only works if you check the items in correct order (you need to check all one level's items,
+            before adding next level) for that you use <code>queue</code></li>
+    </ol>
+
+    <h4>implementing the graph</h4>
+    <ol>
+        <li>how to express a relationship like you -> "Bob"? sounds like a hash table</li>
+        <li>a directed graph, also called a digraph, is a graph in which the edges have a direction. </li>
+        <li>undirected graphs have edges that do not have a direction</li>
+    </ol>
+
+    <h4>implementing the algorithm</h4>
+    <ol>
+        <li>note about queues. <code>enqueue</code> is almost always like <code>push</code>. while <code>dequeue</code>
+            is <code>pop</code></li>
+        <li>queues are FIFO (First In, First Out).</li>
+        <li>process:</li>
+        <ol>
+            <li>keep a queue</li>
+            <li>pop an item off the queue</li>
+            <li>check if an item is valid (eg.: mango seller)</li>
+            <li>if answer is yes: done</li>
+            <li>if answer is no: add all their neighbors to the queue</li>
+            <li>loop</li>
+            <li>if queue is empty: there are no sellers your network</li>
+        </ol>
+        <li>example: <a href="https://github.com/arnasp13/arnaspdk/blob/master/scripts/graphs.js">code in JS</a></li>
+        <li>in the example, <code>Peggy</code> is searched twice, even though that's the same person. that's extra work.
+        </li>
+        <li>it's also possible to end up in an infinite loop. you <-> Peggy</li>
+        <li>solution could be to keep track of visited people and check if that person has not been yet searched</li>
+    </ol>
+
+    <h4>runtime</h4>
+    <ol>
+        <li>O(V+E), where V is for number of vertices, E for number of edges</li>
+    </ol>
+
+
+    <h2>chapter 7: Dijkstra’s algorithm</h2>
+    <h4>intro</h4>
+    <ol>
+        <li>BFS will find you the shortest path. but the shortest path is not always the fastest. Dijkstra’s helps you
+            find the fastest</li>
+    </ol>
+
+    <h4>working with Dijkstra’s algorithm</h4>
+    <ol>
+        <li>steps:</li>
+        <ol>
+            <li>find the “cheapest” node. eg.: this is the node you can get to in the least
+                amount of time</li>
+            <li>update the costs of the neighbors of this node</li>
+            <li>repeat until you’ve done this for every node in the graph</li>
+            <li>calculate the final path</li>
+        </ol>
+
+        <li>terminology:</li>
+        <ol>
+            <li>when working with Dijkstra's algorithms, each edge of a graph has an associated numerical value, called
+                a weight</li>
+            <li>a graph with weights is called a weighted graph. A graph without
+                weights is called an unweighted graph</li>
+            <li>to calculate the shortest path in an unweighted graph, use breadth-first
+                search. To calculate the shortest path in a weighted graph, use Dijkstra’s
+                algorithm</li>
+        </ol>
+    </ol>
+
+    <h4>negative-weight edges</h4>
+    <ol>
+        <li>You can’t use
+            Dijkstra’s algorithm if you have negative-weight edges. Negative-weight
+            edges break the algorithm.</li>
+    </ol>
+
+    <h4>implementing</h4>
+    <ol>
+        <li>3 hash tables: graph, costs, parents</li>
     </ol>
 
 </body>
